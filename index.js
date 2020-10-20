@@ -82,7 +82,8 @@ module.exports = (opts = {}) =>
         .addClass(options.spritesheetClass)
         .attr('xmlns', 'http://www.w3.org/2000/svg');
       sprites = {};
-      $('body').children()
+      let body = $('body');
+      (body.length === 1 ? body : $.root()).children()
         .first()
         .before(spritesheet);
     }
