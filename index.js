@@ -112,15 +112,16 @@ module.exports = (opts = {}) =>
               spritesheet.append(gradients);
               svgSymbol.html(svgSrc.html());
               spritesheet.append(svgSymbol);
-              sprites[src] = spriteId;
+              sprites[src] = svgSymbol;
               i++;
             }
 
             svgElement = $('<svg></svg>')
               .attr('xmlns', 'http://www.w3.org/2000/svg')
+              .attr('viewBox', sprites[src].attr('viewBox'))
               .append(
                 $('<use>')
-                  .attr('xlink:href', `#${sprites[src]}`)
+                  .attr('xlink:href', `#${sprites[src].attr('id')}`)
               );
           } else {
             svgElement = svgSrc;
